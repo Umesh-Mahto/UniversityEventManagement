@@ -7,7 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @AllArgsConstructor
@@ -16,23 +18,22 @@ import java.time.LocalDate;
 @Entity
 public class EventModel {
     @Column(name = "event_id")
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer eventId;
 
-
-  //  @Column(name = "event_name" , unique = true)
+    //@Column(name = "event_name" , unique = true)
     private String eventName;
 
     @Column(name = "event_location")
     private String locationOfEvent;
 
     @Column(name = "event_date")
-    private String date;
+    private LocalDate date;
 
     @Column(name = "event_start_time")
-    private String startTime;
+    private Time startTime;
 
     @Column(name = "event_end_time")
-    private String endTime;
+    private Time endTime;
 }

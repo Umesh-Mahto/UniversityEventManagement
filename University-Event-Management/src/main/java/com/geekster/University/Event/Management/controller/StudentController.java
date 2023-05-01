@@ -1,7 +1,10 @@
 package com.geekster.University.Event.Management.controller;
 
+import com.geekster.University.Event.Management.models.EnumDepartment;
 import com.geekster.University.Event.Management.models.StudentModel;
 import com.geekster.University.Event.Management.service.StudentService;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +22,13 @@ public class StudentController {
         return studentService.saveStudent(studentList);
     }
     @PutMapping("/updateStudentDepartment/{id}/{department}")
-    public void updateStudentdetails(@PathVariable Integer id , @PathVariable String department ){
-      studentService.udateDetails(id , department);
+    public void updateStudentdetails(@PathVariable Integer id , @PathVariable EnumDepartment department ){
+        studentService.udateDetails(id , department);
     }
+
+
     @DeleteMapping("/deleteById/{id}")
-    public void deleteById(@PathVariable Integer id) {
+    public void deleteById(@PathVariable Integer id){
         studentService.deleteStudentDetails(id);
     }
     @GetMapping("/GetStudents")

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IStudentDao extends CrudRepository <StudentModel , Integer> {
-
     @Modifying
-    @Query(value = "update student_model set student_department=:department where student_id=:id" ,nativeQuery = true )
-    public void updateStudentDepartment(Integer id, String department);
+    @Query(value = "update STUDENT_MODEL set STUDENT_DEPARTMENT = :stringDepartment where STUDENT_ID = :id" , nativeQuery = true)
+    public void UpdateStudentDepartment(Integer id , String stringDepartment);
+
 }

@@ -20,8 +20,7 @@ public class StudentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer studentId;
-    @Column(name = "student_first_name" , unique = true)
-//  @Pattern(regexp = "[A-Za-z]")
+
     private String firstName;
     @Column(name = "student_last_name")
     private String lastName;
@@ -31,5 +30,6 @@ public class StudentModel {
     @Max(value = 25 , message = "Age value should be Minimum 18 and Maximum 24")
     private Integer age;
     @Column(name = "student_department")
-    private String department;
+    @Enumerated(EnumType.STRING)
+    private EnumDepartment department;
 }

@@ -5,28 +5,29 @@ import com.geekster.University.Event.Management.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @RestController
 public class EventController {
-
     @Autowired
     EventService eventService;
     @PostMapping("/addEvent")
     public String AddEvent(@RequestBody ArrayList<EventModel> eventList){
-        return  eventService.eventDetails(eventList);
+        return eventService.addEventDetails(eventList);
     }
-    @PutMapping("/updateLocation/{id}/{location}")
-    public void updateLocation(@PathVariable Integer id , @PathVariable String location ){
-        eventService.udateEventDetails(id , location);
+    @PutMapping("/updateEvent")
+    public void updateEvent(@RequestBody EventModel eventList){
+        eventService.updateEventDetails(eventList);
     }
     @DeleteMapping("/deleteEvent/{id}")
     public void deleteEvent(@PathVariable int id){
-        eventService.deleteEventDetails(id);
+        eventService.deleteEventeById(id);
+    }
+    @GetMapping("/getAllEventsByDate/{date}")
+    public ArrayList<EventModel> getAllEventsByDate(@PathVariable LocalDate date){
+        return eventService.allEventsByDate(date);
     }
 
-    @GetMapping("/getAllEventByDate/{date}")
-    public  ArrayList<EventModel> getAllEventByDate(@PathVariable String date){
-        return eventService.allEventByDate(date);
-    }
 }
